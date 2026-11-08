@@ -9,14 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        sand: "#F4EFE6",
-        paper: "#FBF8F2",
-        ink: "#1C1917",
-        teal: "#0F5257",
-        tomato: "#E4572E",
-        mustard: "#F2B134",
-        success: "#2F7D4F",
-        line: "#D8CEC0",
+        sand: "#F3F0EA",
+        paper: "#FFFDFC",
+        ink: "#252321",
+        teal: "#302C28",
+        tomato: "#B58A4A",
+        mustard: "#D8C09A",
+        success: "#657264",
+        line: "#DDD7CE",
       },
     },
   },

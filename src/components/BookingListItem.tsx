@@ -14,7 +14,7 @@ export const ACTIVE_STATUSES: BookingStatus[] = ['PENDING', 'ACCEPTED', 'IN_PROG
 export default function BookingListItem({ booking, party, children }: { booking: Booking; party: 'client' | 'provider'; children?: React.ReactNode }) {
   const other = booking[party];
   return (
-    <li className="border-2 border-ink bg-paper shadow-hard-sm transition hover:-translate-y-0.5 hover:bg-mustard">
+    <li className="border border-line bg-paper shadow-hard-sm transition hover:-translate-y-0.5 hover:bg-sand">
       <Link href={`/bookings/${booking.id}`} className="flex items-center gap-4 p-4">
         <Avatar initials={other.avatar} />
         <div className="flex-1 min-w-0">

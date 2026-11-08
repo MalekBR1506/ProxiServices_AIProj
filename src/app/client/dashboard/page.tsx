@@ -2,14 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { CalendarDays, Clock3, UserRound } from 'lucide-react';
+import { ArrowRight, CalendarDays, Clock3, UserRound } from 'lucide-react';
 import { api } from '@/lib/api';
 import { useLoad } from '@/lib/use-load';
 import { getCurrentSession, type AuthSession } from '@/lib/auth-client';
 import type { Booking } from '@/types';
 import RoleGuard from '@/components/RoleGuard';
 import BookingListItem, { ACTIVE_STATUSES } from '@/components/BookingListItem';
-import { EmptyState, ErrorState, Spinner, primaryButton } from '@/components/ui';
+import { EmptyState, ErrorState, Spinner } from '@/components/ui';
 
 export default function ClientDashboardPage() {
   return <RoleGuard allowedRoles={['CLIENT']}><MyBookings /></RoleGuard>;
@@ -33,11 +33,20 @@ function MyBookings() {
       <div className="mx-auto max-w-5xl space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div><p className="text-xs font-black uppercase tracking-[.18em] text-tomato">Client dashboard</p><h1 className="font-display text-4xl font-black text-ink">Welcome{session?.user.name ? `, ${session.user.name.split(' ')[0]}` : ''}.</h1><p className="mt-2 text-sm text-ink/60">Keep your requests and appointments moving.</p></div>
-        <Link href="/client/request/new" className={primaryButton}>Describe a Problem</Link>
       </div>
 
       {loading && !data ? <Spinner label="Loading your dashboard..." /> : error ? <ErrorState message={error} onRetry={reload} /> : (
         <>
+          <section className="relative overflow-hidden border border-teal bg-teal px-6 py-8 text-sand shadow-hard sm:px-8 sm:py-10">
+            <div className="relative z-10 max-w-2xl">
+              <p className="text-xs font-black uppercase tracking-[.2em] text-mustard">Start here</p>
+              <h2 className="mt-3 font-display text-4xl font-black leading-tight sm:text-5xl">What needs attention?</h2>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-sand/75 sm:text-base">Describe the problem in your own words. We&apos;ll help clarify it and find the right professional nearby.</p>
+              <Link href="/client/request/new" className="mt-6 inline-flex items-center gap-2 border border-mustard bg-mustard px-5 py-3 text-sm font-black text-ink shadow-hard-sm transition hover:bg-sand">Describe a problem <ArrowRight className="h-4 w-4" /></Link>
+            </div>
+            <div aria-hidden className="absolute -right-10 -top-20 h-64 w-64 rounded-full border border-mustard/30 sm:-right-4 sm:-top-28 sm:h-80 sm:w-80" />
+            <div aria-hidden className="absolute -bottom-28 right-24 h-52 w-52 rounded-full border border-sand/15" />
+          </section>
           <section className="grid gap-4 sm:grid-cols-3">
             {metrics.map(({ label, count, icon: Icon }) => <div key={label} className="border-2 border-ink bg-paper p-5 shadow-hard-sm"><Icon className="mb-5 h-6 w-6 text-teal" /><p className="text-3xl font-black">{count}</p><p className="mt-1 text-xs font-bold uppercase tracking-wide text-ink/55">{label}</p></div>)}
           </section>

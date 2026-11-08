@@ -67,17 +67,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-72px)] bg-sand px-4 py-12 paper-grain sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-2">
-        <div className="inline-flex h-12 w-12 items-center justify-center border-2 border-ink bg-mustard text-ink shadow-hard-sm">
-          <MapPin className="w-6 h-6" />
-        </div>
-        <h2 className="font-display text-3xl font-black tracking-tight text-ink sm:text-4xl">
-          Sign in to ProxiService
-        </h2>
-        <p className="text-xs text-ink/60 sm:text-sm">
-          Open your customer account or provider dashboard
-        </p>
+    <div className="min-h-[calc(100vh-72px)] bg-sand px-4 py-16 paper-grain sm:px-6 lg:px-8 lg:py-24">
+      <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+      <div className="space-y-4">
+        <p className="text-xs font-black uppercase tracking-[.25em] text-tomato">Welcome back</p>
+        <h2 className="font-display text-5xl font-black leading-tight tracking-tight text-ink sm:text-6xl">Good work starts with a clear next step.</h2>
+        <p className="max-w-sm text-sm leading-6 text-ink/60">Sign in to continue a request, manage an appointment, or keep your professional profile current.</p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
@@ -105,9 +100,9 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="space-y-6 border-2 border-ink bg-paper px-6 py-8 shadow-hard sm:px-8">
+        <div className="space-y-6 border border-line bg-paper px-6 py-8 shadow-hard sm:px-10">
           {error && (
-            <div className="flex items-center gap-2 border-2 border-tomato bg-tomato/10 p-3.5 text-xs text-tomato">
+            <div className="flex items-center gap-2 border border-tomato bg-tomato/10 p-3.5 text-xs text-tomato">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -168,6 +163,7 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

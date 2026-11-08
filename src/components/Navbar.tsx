@@ -26,14 +26,14 @@ export default function Navbar() {
   const logout = async () => { await clearSession(); setSession(null); router.push('/'); };
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-ink bg-sand">
+    <header className="sticky top-0 z-50 border-b border-line bg-sand/95 backdrop-blur">
       <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" onClick={() => setOpen(false)}><Logo /></Link>
         <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
-          {links.map((link) => <Link key={link.href} href={link.href} className={`border-b-2 py-2 text-sm font-bold transition-colors ${pathname === link.href ? 'border-tomato text-teal' : 'border-transparent text-ink/70 hover:border-tomato hover:text-ink'}`}>{link.label}</Link>)}
+          {links.map((link) => <Link key={link.href} href={link.href} className={`border-b py-2 text-sm font-bold transition-colors ${pathname === link.href ? 'border-tomato text-teal' : 'border-transparent text-ink/70 hover:border-tomato hover:text-ink'}`}>{link.label}</Link>)}
         </nav>
         <div className="hidden items-center gap-3 sm:flex">
-          {session ? <><span className="border-2 border-ink bg-paper px-3 py-2 text-xs font-bold shadow-hard-sm">{session.user.name.split(' ')[0]} <span className="text-tomato">/</span> {isProvider ? 'Professional' : 'Client'}</span><button type="button" onClick={logout} className="inline-flex items-center gap-1.5 border-2 border-transparent px-2 py-2 text-xs font-bold text-ink/70 hover:border-ink hover:text-tomato" aria-label="Log out"><LogOut className="h-4 w-4" /> Log out</button></> : <><Link href="/login" className="inline-flex items-center gap-1.5 px-2 py-2 text-sm font-bold text-ink hover:text-teal"><LogIn className="h-4 w-4" /> Login</Link><Link href="/register" className="inline-flex items-center gap-1.5 border-2 border-ink bg-tomato px-4 py-2 text-sm font-extrabold text-white shadow-hard-sm transition hover:bg-teal"><UserPlus className="h-4 w-4" /> Sign up</Link></>}
+          {session ? <><span className="border border-line bg-paper px-3 py-2 text-xs font-bold shadow-hard-sm">{session.user.name.split(' ')[0]} <span className="text-tomato">/</span> {isProvider ? 'Professional' : 'Client'}</span><button type="button" onClick={logout} className="inline-flex items-center gap-1.5 border border-transparent px-2 py-2 text-xs font-bold text-ink/70 hover:border-line hover:text-tomato" aria-label="Log out"><LogOut className="h-4 w-4" /> Log out</button></> : <><Link href="/login" className="inline-flex items-center gap-1.5 px-2 py-2 text-sm font-bold text-ink hover:text-teal"><LogIn className="h-4 w-4" /> Login</Link><Link href="/register" className="inline-flex items-center gap-1.5 border border-teal bg-teal px-4 py-2 text-sm font-extrabold text-white shadow-hard-sm transition hover:bg-ink"><UserPlus className="h-4 w-4" /> Sign up</Link></>}
         </div>
         <button type="button" onClick={() => setOpen(!open)} className="border-2 border-ink p-2 md:hidden" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>{open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
       </div>
